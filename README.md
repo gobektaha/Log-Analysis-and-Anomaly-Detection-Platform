@@ -9,11 +9,11 @@ Bu proje, e-ticaret altyapılarında meydana gelebilecek siber güvenlik tehditl
   * *Brute Force Tespiti:* Aynı IP'den kısa sürede gelen çoklu 401 hatalarını tespit ederek alarm üretir.
   * *Bot/Scraping Aktivitesi:* Saniyede anormal sayıda sayfa isteği atan IP'leri siber tehdit olarak işaretler.
   * *Kritik Hata Monitörleme:* Ödeme sayfasındaki 500 Internal Server Error çöküşlerini anında raporlayarak ciro kaybı riskini gösterir.
-* **Kalıcı Veri Depolama:** Tespit edilen anomaliler ve üretilen normal loglar, Django ORM yapısı kullanılarak hafif ve performanslı SQLite veritabanına kaydedilir.
+* **Kalıcı Veri Depolama:** Tespit edilen anomaliler ve üretilen normal loglar, SQLAlchemy yapısı kullanılarak hafif ve performanslı SQLite veritabanına kaydedilir.
 * **Canlı Dashboard:** React.js ile geliştirilmiş, dark/light mode destekli arayüz sayesinde sistemdeki aktif loglar ve kırmızı alarmlar anlık olarak takip edilebilir.
 
 ## 💻 Kullanılan Teknolojiler
-* **Backend:** Python, Django ORM
+* **Backend:** Python, SQLAlchemny
 * **Frontend:** React.js, HTML/CSS
 * **Veritabanı:** SQLite
 * **Proje Yönetimi:** Jira (Kanban), Git & GitHub
