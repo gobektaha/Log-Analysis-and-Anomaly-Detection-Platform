@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LogShield - Anomali Tespit ve Log Analiz Platformu</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- CSS Dosyası -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        
+        <!-- Header / Üst Menü -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="logo-icon-wrapper">
+                    <i data-lucide="shield-alert" class="logo-icon"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>LogShield</h1>
+                    <span>Kural Tabanlı Anomali Tespit Platformu</span>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+
+                <!-- Sistemi Sıfırla -->
+                <button class="btn btn-danger" id="clearDataBtn" title="Tüm verileri temizle">
+                    <i data-lucide="trash-2"></i> Temizle
+                </button>
+
+                <!-- Tema Değiştirici (Dark/Light Toggle) -->
+                <button class="theme-toggle" id="themeToggleBtn" aria-label="Temayı Değiştir">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Ana Gösterge Paneli (Dashboard) -->
+        <main class="app-main">
+            
+            <!-- Özet Kartları (Stats Section) -->
+            <section class="stats-section">
+                <!-- Kart 1: Toplam İstek -->
+                <div class="stat-card" id="cardTotalRequests">
+                    <div class="stat-icon-wrapper blue">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Toplam İstek</h3>
+                        <p class="stat-value" id="valTotalRequests">0</p>
+                    </div>
+                </div>
+
+                <!-- Kart 2: Toplam Anomali -->
+                <div class="stat-card" id="cardTotalAnomalies">
+                    <div class="stat-icon-wrapper orange">
+                        <i data-lucide="alert-triangle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Toplam Anomali</h3>
+                        <p class="stat-value text-orange" id="valTotalAnomalies">0</p>
+                    </div>
+                </div>
+
+                <!-- Kart 3: Kritik Hata -->
+                <div class="stat-card" id="cardCriticalErrors">
+                    <div class="stat-icon-wrapper red">
+                        <i data-lucide="flame"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Kritik Hata</h3>
+                        <p class="stat-value text-red" id="valCriticalErrors">0</p>
+                    </div>
+                </div>
+
+                <!-- Kart 4: Tehdit Oranı -->
+                <div class="stat-card" id="cardAnomalyRate">
+                    <div class="stat-icon-wrapper purple">
+                        <i data-lucide="shield-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Anomali Oranı</h3>
+                        <p class="stat-value text-purple" id="valAnomalyRate">0.0%</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grafik ve Panel Ayrımı -->
+            <div class="dashboard-grid">
+                
+                <!-- SOL SÜTUN: Grafik & Aktif Alarmlar -->
+                <div class="dashboard-col left-col">
+                    
+                    <!-- Grafik Bölümü -->
+                    <div class="panel chart-panel">
+                        <div class="panel-header">
+                            <h2><i data-lucide="pie-chart"></i> Anomali Dağılımı</h2>
+                        </div>
+                        <div class="panel-body chart-body">
+                            <canvas id="anomalyChart" width="100" height="100"></canvas>
+                            <div class="no-chart-data" id="noChartDataMessage">
+                                <i data-lucide="database-backup"></i>
+                                <p>Anomali verisi bekleniyor...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Alarmlar Paneli -->
+                    <div class="panel alerts-panel">
+                        <div class="panel-header">
+                            <h2><i data-lucide="bell-ring"></i> Güvenlik Alarmları</h2>
+                            <span class="badge badge-red" id="alertCountBadge">0</span>
+                        </div>
+                        <div class="panel-body scrollable-body" id="alertsContainer">
+                            <!-- Alarmlar Dinamik Olarak Buraya Eklenecek -->
+                            <div class="empty-state" id="emptyAlertsState">
+                                <div class="empty-icon-wrapper">
+                                    <i data-lucide="shield-check"></i>
+                                </div>
+                                <p>Sistem güvenli. Aktif tehdit veya anomali tespit edilmedi.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SAĞ SÜTUN: Canlı Log Akışı -->
+                <div class="dashboard-col right-col">
+                    <div class="panel logs-panel">
+                        <div class="panel-header">
+                            <div class="title-with-pulse">
+                                <h2><i data-lucide="terminal"></i> Canlı Sunucu Logları</h2>
+                                <span class="live-pulse"></span>
+                            </div>
+                            <div class="log-filter-options">
+                                <button class="filter-btn active" data-filter="all">Tümü</button>
+                                <button class="filter-btn text-warning" data-filter="anomaly">Anomaliler</button>
+                            </div>
+                        </div>
+                        <div class="panel-body logs-table-wrapper">
+                            <table class="logs-table">
+                                <thead>
+                                    <tr>
+                                        <th>Zaman</th>
+                                        <th>IP Adresi</th>
+                                        <th>Metot</th>
+                                        <th>Endpoint</th>
+                                        <th>Kod</th>
+                                        <th>Güvenlik Durumu</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="logsTableBody">
+                                    <!-- Loglar Dinamik Olarak Buraya Akacak -->
+                                </tbody>
+                            </table>
+                            <div class="empty-state" id="emptyLogsState">
+                                <div class="empty-icon-wrapper">
+                                    <i data-lucide="loader-2" class="spin"></i>
+                                </div>
+                                <p>Log akışı bekleniyor. Backend sunucusu başlatılıyor...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        
+        <!-- Alt Bilgi (Footer) -->
+        <footer class="app-footer">
+            <p>LogShield Security Dashboard Prototype © 2026. Made with ❤️ for Yazılım Mühendisliği Projesi.</p>
+            <div class="footer-status">
+                <span class="status-indicator online"></span>
+                <span>Sunucu Durumu: Aktif</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JS Dosyası -->
+    <script src="app.js"></script>
+</body>
+</html>
