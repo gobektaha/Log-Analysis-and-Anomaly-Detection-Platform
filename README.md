@@ -26,3 +26,13 @@ Aşağıdaki adımları takip ederek projeyi lokal ortamınızda ayağa kaldıra
 ```bash
 git clone [https://github.com/gobektaha/Log-Analysis-and-Anomaly-Detection-Platform.git)
 cd Log-Analysis-and-Anomaly-Detection-Platform.git
+
+### 2. Backend Kurulumu
+Python sanal ortamınızı oluşturun ve aktifleştirin.
+Gerekli bağımlılıkları yükleyin:
+```bash
+pip install -r requirements.txt
+Log simülasyonunu ve kural motorunu başlatın:
+```bash
+python run.py
+
