@@ -1,7 +1,8 @@
 # 🛡️ E-Commerce Log Analysis & Anomaly Detection Platform
 
 ## 📖 Proje Hakkında
-Bu proje, e-ticaret altyapılarında meydana gelebilecek siber güvenlik tehditlerini ve operasyonel hataları gerçek zamanlı simüle eden, kural tabanlı (rule-based) bir log analizi platformudur. Hantal SIEM ürünlerinin aksine, izole bir ortamda kendi sahte log verisini üretir ve bu veriler üzerinden tehdit avcılığı (threat hunting) yapar.
+* Bu proje, e-ticaret altyapılarında meydana gelebilecek siber güvenlik tehditlerini ve operasyonel hataları gerçek zamanlı simüle eden, kural tabanlı (rule-based) bir log analizi platformudur. 
+* Hantal SIEM ürünlerinin aksine, izole bir ortamda kendi sahte log verisini üretir ve bu veriler üzerinden tehdit avcılığı (threat hunting) yapar.
 
 ## ✨ Temel Özellikler
 * **Mock Data Engine:** Python tabanlı motor ile `/login`, `/products`, `/checkout` gibi kritik uç noktalara (endpoint) rastgele ancak mantıklı HTTP durum kodları üreterek sürekli log akışı sağlar.
@@ -13,7 +14,7 @@ Bu proje, e-ticaret altyapılarında meydana gelebilecek siber güvenlik tehditl
 * **Canlı Dashboard:** React.js ile geliştirilmiş, dark/light mode destekli arayüz sayesinde sistemdeki aktif loglar ve kırmızı alarmlar anlık olarak takip edilebilir.
 
 ## 💻 Kullanılan Teknolojiler
-* **Backend:** Python, SQLAlchemny
+* **Backend:** Python, SQLAlchemy
 * **Frontend:** React.js, HTML/CSS
 * **Veritabanı:** SQLite
 * **Proje Yönetimi:** Jira (Kanban), Git & GitHub
@@ -24,15 +25,5 @@ Aşağıdaki adımları takip ederek projeyi lokal ortamınızda ayağa kaldıra
 
 ### 1. Repoyu Klonlayın
 ```bash
-git clone [https://github.com/gobektaha/Log-Analysis-and-Anomaly-Detection-Platform.git)
-cd Log-Analysis-and-Anomaly-Detection-Platform.git
-
-### 2. Backend Kurulumu
-Python sanal ortamınızı oluşturun ve aktifleştirin.
-Gerekli bağımlılıkları yükleyin:
-```bash
-pip install -r requirements.txt
-Log simülasyonunu ve kural motorunu başlatın:
-```bash
-python run.py
-
+git clone [https://github.com/gobektaha/Log-Analysis-and-Anomaly-Detection-Platform.git](https://github.com/gobektaha/Log-Analysis-and-Anomaly-Detection-Platform.git)
+cd Log-Analysis-and-Anomaly-Detection-Platform
