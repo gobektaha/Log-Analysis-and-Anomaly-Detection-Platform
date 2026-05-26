@@ -27,3 +27,30 @@ Aşağıdaki adımları takip ederek projeyi lokal ortamınızda ayağa kaldıra
 ```bash
 git clone [https://github.com/gobektaha/Log-Analysis-and-Anomaly-Detection-Platform.git](https://github.com/gobektaha/Log-Analysis-and-Anomaly-Detection-Platform.git)
 cd Log-Analysis-and-Anomaly-Detection-Platform
+```
+
+### 2. Backend Kurulumu
+* Python sanal ortamınızı oluşturun ve aktifleştirin.
+* Gerekli bağımlılıkları yükleyin:
+  ```bash
+  pip install -r requirements.txt
+  ```
+* Log simülasyonunu ve kural motorunu başlatın:
+  ```bash
+  python run.py
+  ```
+
+### 3. Frontend Kurulumu
+* Arayüz klasörüne geçiş yapın:
+  ```bash
+  cd frontend
+  ```
+* Paketleri yükleyin ve dashboard'u ayağa kaldırın:
+  ```bash
+  npm install
+  npm start
+  ```
+
+## 👥 Geliştirici Ekip
+* **Taha Mümin Göbek** - Backend Architecture & Rule Engine Development
+* **Görkem Türk** - Frontend & Dashboard UI/UX Design
