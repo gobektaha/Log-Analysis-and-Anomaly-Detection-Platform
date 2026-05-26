@@ -1,0 +1,1004 @@
+/* ==========================================================================
+   CSS Değişkenleri ve Temalar (Karanlık Mod Varsayılan)
+   ========================================================================== */
+:root {
+    /* Karanlık Mod Değişkenleri */
+    --bg-gradient: linear-gradient(135deg, #090d16 0%, #111827 100%);
+    --panel-bg: rgba(17, 24, 39, 0.7);
+    --panel-border: rgba(255, 255, 255, 0.07);
+    --panel-border-hover: rgba(255, 255, 255, 0.15);
+    
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    
+    --card-hover-y: -6px;
+    
+    /* Vurgu ve Güvenlik Renkleri (HSL ile Akort Edilmiş) */
+    --color-primary: #3b82f6;       /* Neon Mavi */
+    --color-primary-glow: rgba(59, 130, 246, 0.3);
+    
+    --color-success: #10b981;       /* Canlı Yeşil */
+    --color-success-bg: rgba(16, 185, 129, 0.15);
+    
+    --color-info: #06b6d4;          /* Turkuaz (Scraping) */
+    --color-info-bg: rgba(6, 182, 212, 0.15);
+    
+    --color-warning: #f59e0b;       /* Sıcak Sarı (Brute Force) */
+    --color-warning-bg: rgba(245, 158, 11, 0.15);
+    
+    --color-danger: #ef4444;        /* Parlak Kırmızı (Kritik 500) */
+    --color-danger-bg: rgba(239, 68, 68, 0.15);
+    
+    --color-critical: #ec4899;      /* Pembe-Kırmızı */
+    --color-critical-bg: rgba(236, 72, 153, 0.15);
+    
+    --header-bg: rgba(15, 23, 42, 0.8);
+    --scrollbar-track: #1f2937;
+    --scrollbar-thumb: #374151;
+    
+    --glass-blur: blur(16px);
+}
+
+/* Aydınlık Mod Değişkenleri */
+body.light-theme {
+    --bg-gradient: linear-gradient(135deg, #f4f6f9 0%, #eef2f6 100%);
+    --panel-bg: rgba(255, 255, 255, 0.75);
+    --panel-border: rgba(0, 0, 0, 0.08);
+    --panel-border-hover: rgba(0, 0, 0, 0.16);
+    
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    
+    --color-primary: #2563eb;
+    --color-primary-glow: rgba(37, 99, 235, 0.2);
+    
+    --color-success: #059669;
+    --color-success-bg: rgba(5, 150, 105, 0.12);
+    
+    --color-info: #0891b2;
+    --color-info-bg: rgba(8, 145, 178, 0.12);
+    
+    --color-warning: #d97706;
+    --color-warning-bg: rgba(217, 119, 6, 0.12);
+    
+    --color-danger: #dc2626;
+    --color-danger-bg: rgba(220, 38, 38, 0.12);
+    
+    --color-critical: #db2777;
+    --color-critical-bg: rgba(219, 39, 119, 0.12);
+    
+    --header-bg: rgba(255, 255, 255, 0.85);
+    --scrollbar-track: #f1f5f9;
+    --scrollbar-thumb: #cbd5e1;
+}
+
+/* ==========================================================================
+   Temel Sıfırlamalar ve Yapı
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ==========================================================================
+   Header (Üst Menü) Tasarımı
+   ========================================================================== */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 2rem;
+    background: var(--header-bg);
+    backdrop-filter: var(--glass-blur);
+    border-bottom: 1px solid var(--panel-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+}
+
+.logo-icon-wrapper {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #06b6d4 100%);
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 0 15px var(--color-primary-glow);
+}
+
+.logo-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.logo-text h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    background: linear-gradient(90deg, var(--text-primary) 30%, var(--color-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-text span {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ==========================================================================
+   Butonlar ve Etkileşimli Öğeler
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.125rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+.btn-secondary {
+    background: var(--panel-bg);
+    color: var(--text-primary);
+    border-color: var(--panel-border);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--panel-border-hover);
+    transform: translateY(-1px);
+}
+
+body.light-theme .btn-secondary:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.btn-danger {
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+    border-color: rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+    background: var(--color-danger);
+    color: white;
+    box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Simülasyon Dropdown */
+.simulation-dropdown {
+    position: relative;
+}
+
+.chevron {
+    transition: transform 0.2s ease;
+}
+
+.simulation-dropdown.open .chevron {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background: var(--panel-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--panel-border);
+    border-radius: 0.75rem;
+    width: 15.5rem;
+    padding: 0.5rem;
+    display: none;
+    flex-direction: column;
+    gap: 0.25rem;
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    animation: slideDown 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.simulation-dropdown.open .dropdown-menu {
+    display: flex;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.875rem;
+    background: transparent;
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(3px);
+}
+
+body.light-theme .dropdown-item:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.dropdown-item i {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+/* Tema Değiştirici Buton */
+.theme-toggle {
+    background: var(--panel-bg);
+    border: 1px solid var(--panel-border);
+    color: var(--text-primary);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.theme-toggle:hover {
+    border-color: var(--panel-border-hover);
+    transform: scale(1.05);
+}
+
+.sun-icon { display: none; width: 1.25rem; height: 1.25rem; }
+.moon-icon { display: block; width: 1.25rem; height: 1.25rem; }
+
+body.light-theme .sun-icon { display: block; }
+body.light-theme .moon-icon { display: none; }
+
+/* ==========================================================================
+   Dashboard Gövdesi ve Grid Yerleşimi
+   ========================================================================== */
+.app-main {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Özet Kartları */
+.stats-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+}
+
+.stat-card {
+    background: var(--panel-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--panel-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(var(--card-hover-y));
+    border-color: var(--panel-border-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-icon-wrapper {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.stat-icon-wrapper i {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.stat-icon-wrapper.blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+.stat-icon-wrapper.orange {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+}
+.stat-icon-wrapper.red {
+    background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+.stat-icon-wrapper.purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.25);
+}
+
+.stat-content h3 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Renk Sınıfları */
+.text-orange { color: var(--color-warning) !important; }
+.text-red { color: var(--color-danger) !important; }
+.text-purple { color: #8b5cf6 !important; }
+
+/* Grid Yapısı */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.dashboard-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Panel Yapısı */
+.panel {
+    background: var(--panel-bg);
+    backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--panel-border);
+    border-radius: 1rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid var(--panel-border);
+}
+
+.panel-header h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.panel-header h2 i {
+    color: var(--color-primary);
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.panel-body {
+    padding: 1.5rem;
+}
+
+.scrollable-body {
+    max-height: 480px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Grafik Paneline Özel */
+.chart-panel {
+    height: auto;
+}
+
+.chart-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 220px;
+}
+
+.no-chart-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.no-chart-data i {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+/* ==========================================================================
+   Güvenlik Alarmları (Alerts Cards) Tasarımı
+   ========================================================================== */
+.alerts-panel {
+    flex: 1;
+}
+
+.alert-item {
+    border-left: 4px solid transparent;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: slideInLeft 0.3s ease;
+}
+
+body.light-theme .alert-item {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.alert-item:hover {
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+body.light-theme .alert-item:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+/* Tehdit Derecelerine Göre Alarm Renklendirmeleri */
+.alert-item.medium {
+    border-left-color: var(--color-info);
+    box-shadow: 0 2px 8px rgba(6, 182, 212, 0.1);
+}
+.alert-item.high {
+    border-left-color: var(--color-warning);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.1);
+}
+.alert-item.critical {
+    border-left-color: var(--color-danger);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.15);
+    animation: criticalAlertPulse 2s infinite alternate;
+}
+
+.alert-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert-title {
+    font-weight: 700;
+    font-size: 0.93rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-item.medium .alert-title { color: var(--color-info); }
+.alert-item.high .alert-title { color: var(--color-warning); }
+.alert-item.critical .alert-title { color: var(--color-danger); }
+
+.alert-time {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.alert-body {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--text-primary);
+}
+
+.alert-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+body.light-theme .alert-footer {
+    border-top-color: rgba(0, 0, 0, 0.05);
+}
+
+.alert-ip {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+}
+
+body.light-theme .alert-ip {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.alert-severity-badge {
+    text-transform: uppercase;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 0.125rem 0.5rem;
+    border-radius: 1rem;
+}
+
+.alert-item.medium .alert-severity-badge {
+    background: var(--color-info-bg);
+    color: var(--color-info);
+}
+.alert-item.high .alert-severity-badge {
+    background: var(--color-warning-bg);
+    color: var(--color-warning);
+}
+.alert-item.critical .alert-severity-badge {
+    background: var(--color-danger-bg);
+    color: var(--color-danger);
+}
+
+/* Tetikleyici Loglar Dropdown */
+.alert-details-toggle {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.alert-details-toggle:hover {
+    color: var(--text-secondary);
+}
+
+.alert-triggering-logs {
+    display: none;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    white-space: pre-wrap;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+body.light-theme .alert-triggering-logs {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.03);
+}
+
+.alert-triggering-logs.open {
+    display: block;
+}
+
+/* ==========================================================================
+   Log Tablosu ve Canlı Log Akışı
+   ========================================================================== */
+.logs-panel {
+    flex: 1;
+}
+
+.title-with-pulse {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.live-pulse {
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-success);
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+}
+
+.live-pulse::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-success);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: pulseRing 1.5s infinite ease-in-out;
+}
+
+.log-filter-options {
+    display: flex;
+    gap: 0.375rem;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.25rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--panel-border);
+}
+
+body.light-theme .log-filter-options {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+}
+
+.filter-btn.active {
+    background: var(--panel-bg);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.logs-table-wrapper {
+    max-height: 520px;
+    overflow-y: auto;
+    padding: 0;
+}
+
+.logs-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+}
+
+.logs-table th {
+    background: rgba(255, 255, 255, 0.01);
+    position: sticky;
+    top: 0;
+    padding: 1rem 1.25rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+    border-bottom: 1px solid var(--panel-border);
+    backdrop-filter: var(--glass-blur);
+    z-index: 5;
+}
+
+body.light-theme .logs-table th {
+    background: rgba(0, 0, 0, 0.01);
+}
+
+.logs-table td {
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    color: var(--text-primary);
+}
+
+body.light-theme .logs-table td {
+    border-bottom-color: rgba(0, 0, 0, 0.02);
+}
+
+.logs-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+/* Animasyonlu log satırı girişi */
+.logs-table tbody tr.new-row {
+    animation: fade-in-slide 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Anomali Log Satırı Vurguları */
+.logs-table tr.anomaly-row {
+    background-color: rgba(239, 68, 68, 0.06) !important;
+}
+
+.logs-table tr.anomaly-row.medium {
+    background-color: rgba(6, 182, 212, 0.06) !important;
+    border-left: 3px solid var(--color-info);
+}
+
+.logs-table tr.anomaly-row.high {
+    background-color: rgba(245, 158, 11, 0.07) !important;
+    border-left: 3px solid var(--color-warning);
+}
+
+.logs-table tr.anomaly-row.critical {
+    background-color: rgba(239, 68, 68, 0.09) !important;
+    border-left: 3px solid var(--color-danger);
+}
+
+.logs-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.015);
+}
+
+body.light-theme .logs-table tr:hover {
+    background-color: rgba(0, 0, 0, 0.015);
+}
+
+/* Log Rozetleri (Badges) */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.badge-green { background: var(--color-success-bg); color: var(--color-success); }
+.badge-red { background: var(--color-danger-bg); color: var(--color-danger); }
+.badge-orange { background: var(--color-warning-bg); color: var(--color-warning); }
+.badge-info { background: var(--color-info-bg); color: var(--color-info); }
+.badge-secondary { background: rgba(255, 255, 255, 0.08); color: var(--text-secondary); }
+
+body.light-theme .badge-secondary {
+    background: rgba(0, 0, 0, 0.06);
+}
+
+/* Tablo Veri Biçimleri */
+.log-ip {
+    font-weight: 600;
+}
+.log-method {
+    font-weight: 700;
+}
+.log-endpoint {
+    color: var(--text-secondary);
+}
+.log-status {
+    font-weight: 700;
+}
+
+/* Durum Koduna Göre Yazı Rengi */
+.status-2xx { color: var(--color-success); }
+.status-4xx { color: var(--color-warning); }
+.status-5xx { color: var(--color-danger); }
+
+/* ==========================================================================
+   Boş ve Yükleme Durumları (Empty States)
+   ========================================================================== */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    color: var(--text-muted);
+    gap: 1rem;
+}
+
+.empty-icon-wrapper {
+    background: rgba(255, 255, 255, 0.02);
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed var(--panel-border);
+    color: var(--text-muted);
+}
+
+body.light-theme .empty-icon-wrapper {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.empty-icon-wrapper i {
+    width: 2rem;
+    height: 2rem;
+}
+
+#emptyAlertsState .empty-icon-wrapper {
+    color: var(--color-success);
+    background: var(--color-success-bg);
+    border-color: rgba(16, 185, 129, 0.2);
+}
+
+/* ==========================================================================
+   Footer (Alt Bilgi) Tasarımı
+   ========================================================================== */
+.app-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid var(--panel-border);
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: var(--glass-blur);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: auto;
+}
+
+body.light-theme .app-footer {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.footer-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.status-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-indicator.online {
+    background-color: var(--color-success);
+    box-shadow: 0 0 8px var(--color-success);
+}
+
+/* ==========================================================================
+   Animasyon Tanımları
+   ========================================================================== */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fade-in-slide {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.6);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+}
+
+@keyframes criticalAlertPulse {
+    0% {
+        background-color: rgba(239, 68, 68, 0.05);
+        border-left-color: var(--color-danger);
+    }
+    100% {
+        background-color: rgba(239, 68, 68, 0.15);
+        border-left-color: var(--color-critical);
+        box-shadow: 0 0 15px rgba(239, 68, 68, 0.25);
+    }
+}
+
+.spin {
+    animation: rotate 1.2s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Kaydırma Çubuğu (Scrollbar) Tasarımı */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
