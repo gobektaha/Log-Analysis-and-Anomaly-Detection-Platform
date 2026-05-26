@@ -24,5 +24,5 @@ Aşağıdaki adımları takip ederek projeyi lokal ortamınızda ayağa kaldıra
 
 ### 1. Repoyu Klonlayın
 ```bash
-git clone [https://github.com/kullanici-adi/repo-adi.git](https://github.com/kullanici-adi/repo-adi.git)
-cd repo-adi
+git clone [https://github.com/gobektaha/Log-Analysis-and-Anomaly-Detection-Platform.git)
+cd Log-Analysis-and-Anomaly-Detection-Platform.git
