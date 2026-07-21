@@ -52,5 +52,4 @@ cd Log-Analysis-and-Anomaly-Detection-Platform
   ```
 
 ## 👥 Geliştirici Ekip
-* **Taha Mümin Göbek** - Backend Architecture & Rule Engine Development
-* **Görkem Türk** - Frontend & Dashboard UI/UX Design
+* **Taha Mümin Göbek** - Backend & Frontend & Dashboard UI/UX Design & Dashboard UI/UX Desig Architecture & Rule Engine Development
